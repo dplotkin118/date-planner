@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+
+<head>
+        <script language="javascript">
+                function useRegex(input) {
+                        let regex = /\[[^\]]*],\[[^\]]*],\[[^\]]*],\[[^\]]*]]/i;
+                        return input.split(regex);
+                    }
+                function usingFetch() {
+                        res = fetch("https://210k3a8j9i.execute-api.us-east-2.amazonaws.com/query")
+                                .then(res => res.text())
+                                .then(data => {
+                                        data = JSON.parse(data);
+                                        console.log(data[1][0].name);
+                                        
+                                        console.log(data.entries);
+                                        
+                                        var action = data[0][0].name;
+                                        var media = data[1][0].name;
+                                        var droog = data[2][0].name;
+                                        var food = data[3][0].name;
+                                        
+                                        
+                                        document.getElementById("action").innerHTML = action;
+                                        document.getElementById("media").innerHTML = media;
+                                        document.getElementById("droog").innerHTML = droog;
+                                        document.getElementById("food").innerHTML = food;
+                                })
+                }
+
+        </script>
+        <style>
+                .center {
+                        display: block;
+                        margin-left: auto;
+                        margin-right: auto;
+                        width: 200px;
+                }
+                img:hover{
+                    cursor:pointer;
+                }
+                
+                #action,
+                #media,
+                #droog,
+                #food {
+                    display: inline-block;
+                    width: 15%;
+                    margin-right: 0;
+                    padding-right: 0;
+                    padding-left: 100px;
+                    padding-top: 100px;
+                    font-size: 30px;
+                }
+                .body {
+
+                }
+
+        </style>
+</head>
+
+<body>
+        <h1 style="text-align: center">
+                Date Selector
+        </h1>
+        <img src="magic hat.jpg" onclick="usingFetch()" class="center">
+        
+
+        <div id="write">
+            <div id="action">
+
+            </div>
+            <div id="media">
+
+            </div>
+            <div id="droog">
+
+            </div>
+            <div id="food">
+
+            </div>
+        </div>
+
+        <div id="manage">
+            
+        </div>
+        
+</body>
