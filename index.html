@@ -17,14 +17,25 @@
                                         
                                         var action = data[0][0].name;
                                         var media = data[1][0].name;
-                                        var droog = data[2][0].name;
+                                        var other = data[2][0].name;
                                         var food = data[3][0].name;
                                         
                                         
                                         document.getElementById("action").innerHTML = action;
                                         document.getElementById("media").innerHTML = media;
+                                        document.getElementById("other").innerHTML = droog;
                                         document.getElementById("food").innerHTML = food;
                                 })
+                }
+                function validate()
+                {
+                    var validate = prompt("Enter code");
+                    if (validate == "botaanddaniel") {
+                        document.getElementById("other").style.visibility = "visible";
+                    }
+                    else {
+                        document.getElementById("manage").innerHTML += " You don't have permission to see that :)";
+                    }
                 }
 
         </script>
@@ -54,6 +65,9 @@
                 .body {
 
                 }
+                #manage {
+                    padding-top: 100px;
+                }
 
         </style>
 </head>
@@ -72,14 +86,16 @@
             <div id="media">
 
             </div>
-            
             <div id="food">
 
+            </div>
+            <div id="other" style="visibility: hidden">
+            
             </div>
         </div>
 
         <div id="manage">
-            
+            <button onclick="validate()">Show</button>
         </div>
         
 </body>
