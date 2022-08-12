@@ -1,101 +1,105 @@
 <!DOCTYPE html>
 
 <head>
-        <script language="javascript">
-                function useRegex(input) {
-                        let regex = /\[[^\]]*],\[[^\]]*],\[[^\]]*],\[[^\]]*]]/i;
-                        return input.split(regex);
-                    }
-                function usingFetch() {
-                        res = fetch("https://210k3a8j9i.execute-api.us-east-2.amazonaws.com/query")
-                                .then(res => res.text())
-                                .then(data => {
-                                        data = JSON.parse(data);
-                                        console.log(data[1][0].name);
-                                        
-                                        console.log(data.entries);
-                                        
-                                        var action = data[0][0].name;
-                                        var media = data[1][0].name;
-                                        var other = data[2][0].name;
-                                        var food = data[3][0].name;
-                                        
-                                        
-                                        document.getElementById("action").innerHTML = action;
-                                        document.getElementById("media").innerHTML = media;
-                                        document.getElementById("other").innerHTML = droog;
-                                        document.getElementById("food").innerHTML = food;
-                                })
-                }
-                function validate()
-                {
-                    var validate = prompt("Enter code");
-                    if (validate == "botaanddaniel") {
-                        document.getElementById("other").style.visibility = "visible";
-                    }
-                    else {
-                        document.getElementById("manage").innerHTML += " You don't have permission to see that :)";
-                    }
-                }
+    <script language="javascript">
+        function useRegex(input) {
+            let regex = /\[[^\]]*],\[[^\]]*],\[[^\]]*],\[[^\]]*]]/i;
+            return input.split(regex);
+        }
+        function usingFetch() {
+            res = fetch("https://210k3a8j9i.execute-api.us-east-2.amazonaws.com/query")
+                .then(res => res.text())
+                .then(data => {
+                    data = JSON.parse(data);
+                    console.log(data[1][0].name);
 
-        </script>
-        <style>
-                .center {
-                        display: block;
-                        margin-left: auto;
-                        margin-right: auto;
-                        width: 200px;
-                }
-                img:hover{
-                    cursor:pointer;
-                }
-                
-                #action,
-                #media,
-                #droog,
-                #food {
-                    display: inline-block;
-                    width: 15%;
-                    margin-right: 0;
-                    padding-right: 0;
-                    padding-left: 100px;
-                    padding-top: 100px;
-                    font-size: 30px;
-                }
-                .body {
+                    console.log(data.entries);
 
-                }
-                #manage {
-                    padding-top: 100px;
-                }
+                    var action = data[0][0].name;
+                    var media = data[1][0].name;
+                    var other = data[2][0].name;
+                    var food = data[3][0].name;
 
-        </style>
+
+                    document.getElementById("action").innerHTML = action;
+                    document.getElementById("media").innerHTML = media;
+                    document.getElementById("food").innerHTML = food;
+                    document.getElementById("other").innerHTML = other;
+                })
+        }
+        function validate() {
+            var validate = prompt("Enter code");
+            if (validate == "botaanddaniel") {
+                document.getElementById("other").style.visibility = "visible";
+                document.getElementById("manage").innerHTML = '<button onclick="validate()">Show</button>';
+            }
+            else {
+                document.getElementById("manage").innerHTML += " You don't have permission to see that :)";
+            }
+        }
+
+    </script>
+    <style>
+        .center {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 200px;
+        }
+
+        img:hover {
+            cursor: pointer;
+        }
+
+        #write {
+            border: 1px solid black;
+        }
+
+        #action,
+        #media,
+        #other,
+        #food {
+            display: inline-block;
+            width: 15%;
+            margin-right: 0;
+            padding-right: 0;
+            padding-left: 100px;
+            padding-top: 100px;
+            font-size: 30px;
+            border: 1px solid black;
+            text-align: center;
+        }
+
+        #manage {
+            padding-top: 100px;
+        }
+    </style>
 </head>
 
 <body>
-        <h1 style="text-align: center">
-                Date Selector
-        </h1>
-        <img src="magic hat.jpg" onclick="usingFetch()" class="center">
-        
+    <h1 style="text-align: center">
+        Date Selector
+    </h1>
+    <img src="magic hat.jpg" onclick="usingFetch()" class="center">
 
-        <div id="write">
-            <div id="action">
 
-            </div>
-            <div id="media">
+    <div id="write">
+        <div id="action">
 
-            </div>
-            <div id="food">
-
-            </div>
-            <div id="other" style="visibility: hidden">
-            
-            </div>
         </div>
+        <div id="media">
 
-        <div id="manage">
-            <button onclick="validate()">Show</button>
         </div>
-        
+        <div id="food">
+
+        </div>
+        <div id="other" style="visibility: hidden">
+
+        </div>
+    </div>
+
+    <div id="manage">
+        <button onclick="validate()">Show</button>
+    </div>
+
 </body>
